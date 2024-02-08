@@ -82,14 +82,14 @@ const Data = () => {
 
   return (
     <>
-      <h3 className="text-2xl text-center font-semibold bg-slate-900 text-white/80 border-b py-4">
+      <h3 className="text-2xl text-center font-semibold bg-slate-900 text-white/80  py-8">
         CRUD OPERATION IN REACT
       </h3>
       <ToastContainer />
-      <div className="w-[90%] mx-auto my-6 bg-slate-900 flex justify-evenly items-start text-white p-2 h-full rounded-md">
+      <div className="w-full md:w-[80%] mx-auto my-6 text-white  h-full">
         <form
           action=""
-          className="form flex justify-between items-center gap-10"
+          className="w-full flex md:justify-between md:items-center md:gap-10 gap-5 flex-col  md:flex-row justify-center p-1"
           onSubmit={submitHandler}
         >
           <div className="">
@@ -115,8 +115,8 @@ const Data = () => {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div className="p-3 text-white/70">
-            <label htmlFor="task">Add your today's Task</label>
+          <div className=" text-white/70">
+            <label htmlFor="task">Add your Task</label>
             <input
               type="text"
               placeholder="Add your task..."
@@ -127,14 +127,18 @@ const Data = () => {
           </div>
           <button
             type="submit"
-            className={`${editid ? "bg-green-500 rounded-md mt-6 font-semibold py-2 px-4" : "py-2 px-4 bg-blue-500 rounded-md mt-6 font-semibold"} `}
+            className={`${
+              editid
+                ? "bg-green-500 rounded-md mt-6 font-semibold py-2 px-4"
+                : "py-2 px-4 bg-blue-500 rounded-md mt-6 font-semibold"
+            } `}
           >
             {editid ? "Edit" : "Submit"}
           </button>
         </form>
       </div>
       {inputValues?.length > 0 && (
-        <table className="table w-[83%] mx-auto bg-slate-900 text-white/85 border-collapse border border-slate-500">
+        <table className="table md:w-[80%] w-full mx-auto bg-slate-900 text-white/85 border-collapse border border-slate-500">
           <tbody>
             <tr className="bg-slate-600/80">
               <th className="py-3 border border-slate-600">UID</th>
@@ -150,7 +154,7 @@ const Data = () => {
               <Fragment key={id}>
                 <tbody>
                   <tr className="text-center text-white/70">
-                    <td className="py-2 border border-slate-600">
+                    <td className="md:py-2 md:border md:border-slate-600">
                       {value?.id}
                     </td>
                     <td className="py-2 border border-slate-600">
@@ -162,7 +166,7 @@ const Data = () => {
                     <td className=" py-2 border border-slate-600">
                       {value?.task}
                     </td>
-                    <td className="py-2 border border-slate-600">
+                    <td className="py-2 border border-slate-600 flex justify-center gap-3 items-item">
                       <button
                         onClick={() => handleEdit(value)}
                         className="py-2 px-3 bg-green-500 rounded-md  font-semibold"
