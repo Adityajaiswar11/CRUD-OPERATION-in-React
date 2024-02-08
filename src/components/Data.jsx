@@ -9,7 +9,7 @@ const Data = () => {
     return data ? JSON.parse(data) : [];
   };
 
-  const [email, setEmail] = useState("");
+  const [description, Description] = useState("");
   const [name, setName] = useState("");
   const [task, setTask] = useState("");
   const [editid, setEditid] = useState(0);
@@ -30,30 +30,35 @@ const Data = () => {
       const editdata = inputValues.find((d) => d.id === editid);
       const editedData = inputValues.map((data) =>
         data.id === editdata.id
-          ? (data = { id: data.id, name, email, task })
-          : { id: data.id, name: data.name, email: data.email, task: data.task }
+          ? (data = { id: data.id, name, description, task })
+          : {
+              id: data.id,
+              name: data.name,
+              description: data.description,
+              task: data.task,
+            }
       );
       setInputvalues(editedData);
       setName("");
-      setEmail("");
+      Description("");
       setTask("");
       setEditid(0);
       return;
     }
 
-    if (!name || !email || !task) {
+    if (!name || !description || !task) {
       toast.error("Please fill out all fields!", {
         position: "top-center",
       });
     }
 
-    if (name !== "" && email !== "" && task !== "") {
+    if (name !== "" && description !== "" && task !== "") {
       setInputvalues([
-        { id: `${name}-${Date.now()}`, name, email, task },
+        { id: `${name}-${Date.now()}`, name, description, task },
         ...inputValues,
       ]);
       setName("");
-      setEmail("");
+      Description("");
       setTask("");
     }
   };
@@ -63,7 +68,7 @@ const Data = () => {
   const handleEdit = (value) => {
     let newData = inputValues.find((data) => data.id === value.id);
     setName(newData.name);
-    setEmail(newData.email);
+    Description(newData.description);
     setTask(newData.task);
     setEditid(value.id);
   };
@@ -101,13 +106,13 @@ const Data = () => {
           </div>
 
           <div className=" text-white/70">
-            <label htmlFor="email">Your Email</label>
+            <label htmlFor="description">Your Description</label>
             <input
-              type="email"
-              placeholder="Add your email..."
-              value={email}
+              type="description"
+              placeholder="Add your description..."
+              value={description}
               className="py-2  px-2 w-full rounded-md mt-1 outline-none bg-slate-800  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => Description(e.target.value)}
             />
           </div>
           <div className="p-3 text-white/70">
@@ -133,7 +138,7 @@ const Data = () => {
           <tbody>
             <tr className="bg-slate-600/80">
               <th className="py-3 border border-slate-600">Name</th>
-              <th className="py-3 border border-slate-600">Email</th>
+              <th className="py-3 border border-slate-600">Description</th>
               <th className="py-3 border border-slate-600">Task</th>
               <th className="py-3 border border-slate-600">Actions</th>
             </tr>
@@ -148,7 +153,7 @@ const Data = () => {
                       {value?.name}
                     </td>
                     <td className="py-2 border border-slate-600">
-                      {value?.email}
+                      {value?.description}
                     </td>
                     <td className=" py-2 border border-slate-600">
                       {value?.task}
