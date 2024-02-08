@@ -9,7 +9,7 @@ const Data = () => {
     return data ? JSON.parse(data) : [];
   };
 
-  const [description, Description] = useState("");
+  const [description, setDescription] = useState("");
   const [name, setName] = useState("");
   const [task, setTask] = useState("");
   const [editid, setEditid] = useState(0);
@@ -40,7 +40,7 @@ const Data = () => {
       );
       setInputvalues(editedData);
       setName("");
-      Description("");
+      setDescription("");
       setTask("");
       setEditid(0);
       return;
@@ -54,11 +54,11 @@ const Data = () => {
 
     if (name !== "" && description !== "" && task !== "") {
       setInputvalues([
-        { id: `${name}-${Date.now()}`, name, description, task },
+        { id: `${Date.now()}`, name, description, task },
         ...inputValues,
       ]);
       setName("");
-      Description("");
+      setDescription("");
       setTask("");
     }
   };
@@ -68,7 +68,7 @@ const Data = () => {
   const handleEdit = (value) => {
     let newData = inputValues.find((data) => data.id === value.id);
     setName(newData.name);
-    Description(newData.description);
+    setDescription(newData.description);
     setTask(newData.task);
     setEditid(value.id);
   };
@@ -112,7 +112,7 @@ const Data = () => {
               placeholder="Add your description..."
               value={description}
               className="py-2  px-2 w-full rounded-md mt-1 outline-none bg-slate-800  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90"
-              onChange={(e) => Description(e.target.value)}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
           <div className="p-3 text-white/70">
@@ -137,6 +137,7 @@ const Data = () => {
         <table className="table w-[83%] mx-auto bg-slate-900 text-white/85 border-collapse border border-slate-500">
           <tbody>
             <tr className="bg-slate-600/80">
+              <th className="py-3 border border-slate-600">UID</th>
               <th className="py-3 border border-slate-600">Name</th>
               <th className="py-3 border border-slate-600">Description</th>
               <th className="py-3 border border-slate-600">Task</th>
@@ -149,6 +150,9 @@ const Data = () => {
               <Fragment key={id}>
                 <tbody>
                   <tr className="text-center text-white/70">
+                    <td className="py-2 border border-slate-600">
+                      {value?.id}
+                    </td>
                     <td className="py-2 border border-slate-600">
                       {value?.name}
                     </td>
