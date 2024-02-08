@@ -127,7 +127,7 @@ const Data = () => {
           </div>
           <button
             type="submit"
-            className="py-2 px-4 bg-blue-500 rounded-md mt-6 font-semibold"
+            className={`${editid ? "bg-green-500 rounded-md mt-6 font-semibold py-2 px-4" : "py-2 px-4 bg-blue-500 rounded-md mt-6 font-semibold"} `}
           >
             {editid ? "Edit" : "Submit"}
           </button>
