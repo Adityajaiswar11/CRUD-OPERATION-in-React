@@ -141,7 +141,7 @@ const Data = () => {
         <table className="table md:w-[80%] w-full mx-auto bg-slate-900 text-white/85 border-collapse border border-slate-500">
           <tbody>
             <tr className="bg-slate-600/80">
-              <th className="py-3 border border-slate-600">ID</th>
+              <th className="py-3 border border-slate-600 hidden md:flex md:justify-center md:items-center">ID</th>
               <th className="py-3 border border-slate-600">Name</th>
               <th className="py-3 border border-slate-600">Description</th>
               <th className="py-3 border border-slate-600">Task</th>
@@ -157,7 +157,7 @@ const Data = () => {
                     <td className="py-2  border-y-none md:border-slate-600 hidden md:flex md:justify-center md:items-center">
                       {value?.id}
                     </td>
-                    <td className="py-2 border border-slate-600">
+                    <td className="py-2  border border-slate-600">
                       {value?.name}
                     </td>
                     <td className="py-2 border border-slate-600">

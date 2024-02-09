@@ -1,5 +1,5 @@
 
-import Create from "./components/Data";
+import Data from "./components/Data";
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -8,9 +8,7 @@ function App() {
   
   return (
     <div>
-      
-        <Create/>
-  
+        <Data/>
     </div>
   );
 }
