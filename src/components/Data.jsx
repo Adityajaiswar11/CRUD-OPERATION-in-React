@@ -129,8 +129,8 @@ const Data = () => {
             type="submit"
             className={`${
               editid
-                ? "bg-green-500 rounded-md mt-6 font-semibold py-2 px-4"
-                : "py-2 px-4 bg-blue-500 rounded-md mt-6 font-semibold"
+                ? "bg-green-500 rounded-md mt-6 font-semibold py-2 px-4 hover:opacity-100 duration-100 ease-linear opacity-90"
+                : "py-2 px-4 bg-blue-500 rounded-md mt-6 font-semibold hover:opacity-100 duration-100 ease-linear opacity-90"
             } `}
           >
             {editid ? "Edit" : "Submit"}
@@ -178,7 +178,7 @@ const Data = () => {
                       </button>{" "}
                       <button
                         onClick={() => handleDelete(value.id)}
-                        className="py-2 md:px-3 px-2 bg-red-500 rounded-md ml-2 font-semibold"
+                        className="py-2 md:px-3 px-2 bg-red-500 rounded-md ml-2 font-semibol"
                       >
                         Delete
                       </button>
