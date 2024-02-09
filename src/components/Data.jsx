@@ -100,7 +100,7 @@ const Data = () => {
               type="text"
               placeholder="Add your name..."
               value={name}
-              className="md:y-2  py-4 px-2 w-full rounded-md mt-1 outline-none bg-slate-800   focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90 "
+              className="md:py-2  py-4 px-2 w-full rounded-md mt-1 outline-none bg-slate-800   focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90 "
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -111,7 +111,7 @@ const Data = () => {
               type="description"
               placeholder="Add your description..."
               value={description}
-              className="md:y-2  py-4 px-2 w-full rounded-md mt-1 outline-none bg-slate-800  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90"
+              className="md:py-2  py-4 px-2 w-full rounded-md mt-1 outline-none bg-slate-800  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90"
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
@@ -141,7 +141,9 @@ const Data = () => {
         <table className="table md:w-[80%] w-full mx-auto bg-slate-900 text-white/85 border-collapse border border-slate-500">
           <tbody>
             <tr className="bg-slate-600/80">
-              <th className="py-3 border border-slate-600 hidden md:flex md:justify-center md:items-center">ID</th>
+              <th className="py-3 border border-slate-600 hidden md:flex md:justify-center md:items-center">
+                ID
+              </th>
               <th className="py-3 border border-slate-600">Name</th>
               <th className="py-3 border border-slate-600">Description</th>
               <th className="py-3 border border-slate-600">Task</th>
