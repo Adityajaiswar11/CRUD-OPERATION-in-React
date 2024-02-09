@@ -82,8 +82,8 @@ const Data = () => {
 
   return (
     <>
-      <h3 className="text-2xl text-center font-semibold bg-slate-900 text-white/80  py-8">
-        CRUD OPERATION IN REACT
+      <h3 className="text-2xl text-center font-semibold bg-slate-900 text-red-500/90  py-8 border-b">
+       Add your daily todo task
       </h3>
       <ToastContainer />
       <div className="w-full md:w-[80%] mx-auto my-6 text-white  h-full">
@@ -106,7 +106,7 @@ const Data = () => {
           </div>
 
           <div className=" text-white/70">
-            <label htmlFor="description">Your Description</label>
+            <label htmlFor="description">Description</label>
             <input
               type="description"
               placeholder="Add your description..."
@@ -116,7 +116,7 @@ const Data = () => {
             />
           </div>
           <div className=" text-white/70">
-            <label htmlFor="task">Add your Task</label>
+            <label htmlFor="task">Add Task</label>
             <input
               type="text"
               placeholder="Add your task..."
@@ -154,7 +154,7 @@ const Data = () => {
               <Fragment key={id}>
                 <tbody>
                   <tr className="text-center text-white/70">
-                    <td className="md:py-2 md:border md:border-slate-600">
+                    <td className="py-2 border-y-none md:border-slate-600 hidden md:flex md:justify-center md:items-center">
                       {value?.id}
                     </td>
                     <td className="py-2 border border-slate-600">
@@ -166,17 +166,17 @@ const Data = () => {
                     <td className=" py-2 border border-slate-600">
                       {value?.task}
                     </td>
-                    <td className="py-2 border border-slate-600 flex justify-center gap-3 items-item">
+                    <td className="py-2 border border-slate-600 md:flex md:justify-center md:gap-3 md:items-item">
                       <button
                         onClick={() => handleEdit(value)}
-                        className="py-2 px-3 bg-green-500 rounded-md  font-semibold"
+                        className="py-2 md:px-3 px-2 bg-green-500 rounded-md  font-semibold"
                       >
                         {" "}
                         Edit
                       </button>{" "}
                       <button
                         onClick={() => handleDelete(value.id)}
-                        className="py-2 px-3 bg-red-500 rounded-md ml-2 font-semibold"
+                        className="py-2 md:px-3 px-2 bg-red-500 rounded-md ml-2 font-semibold"
                       >
                         Delete
                       </button>
