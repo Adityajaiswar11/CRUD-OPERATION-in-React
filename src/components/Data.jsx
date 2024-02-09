@@ -100,7 +100,7 @@ const Data = () => {
               type="text"
               placeholder="Add your name..."
               value={name}
-              className="py-2  px-2 w-full rounded-md mt-1 outline-none bg-slate-800   focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90 "
+              className="pmd:y-2  py-3 px-2 w-full rounded-md mt-1 outline-none bg-slate-800   focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90 "
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -111,7 +111,7 @@ const Data = () => {
               type="description"
               placeholder="Add your description..."
               value={description}
-              className="py-2  px-2 w-full rounded-md mt-1 outline-none bg-slate-800  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90"
+              className="pmd:y-2  py-3 px-2 w-full rounded-md mt-1 outline-none bg-slate-800  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90"
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
@@ -121,7 +121,7 @@ const Data = () => {
               type="text"
               placeholder="Add your task..."
               value={task}
-              className="py-2 px-2 w-full rounded-md mt-1  outline-none bg-slate-800  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90"
+              className="md:py-2 py-3 px-2 w-full rounded-md mt-1  outline-none bg-slate-800  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90"
               onChange={(e) => setTask(e.target.value)}
             />
           </div>
