@@ -83,7 +83,7 @@ const Data = () => {
   return (
     <>
       <h3 className="text-2xl text-center font-semibold bg-slate-900 text-red-500/90  py-8 border-b">
-       Add your daily todo task
+        Add your daily todo task
       </h3>
       <ToastContainer />
       <div className="w-full md:w-[80%] mx-auto my-6 text-white  h-full">
@@ -141,7 +141,7 @@ const Data = () => {
         <table className="table md:w-[80%] w-full mx-auto bg-slate-900 text-white/85 border-collapse border border-slate-500">
           <tbody>
             <tr className="bg-slate-600/80">
-              <th className="py-3 border border-slate-600">UID</th>
+              <th className="py-3 border border-slate-600">ID</th>
               <th className="py-3 border border-slate-600">Name</th>
               <th className="py-3 border border-slate-600">Description</th>
               <th className="py-3 border border-slate-600">Task</th>
@@ -154,7 +154,7 @@ const Data = () => {
               <Fragment key={id}>
                 <tbody>
                   <tr className="text-center text-white/70">
-                    <td className="py-2 border-y-none md:border-slate-600 hidden md:flex md:justify-center md:items-center">
+                    <td className="py-2  border-y-none md:border-slate-600 hidden md:flex md:justify-center md:items-center">
                       {value?.id}
                     </td>
                     <td className="py-2 border border-slate-600">
@@ -166,7 +166,7 @@ const Data = () => {
                     <td className=" py-2 border border-slate-600">
                       {value?.task}
                     </td>
-                    <td className="py-2 border border-slate-600 md:flex md:justify-center md:gap-3 md:items-item">
+                    <td className=" py-2 border border-slate-600 md:flex md:justify-center md:gap-3 md:items-item">
                       <button
                         onClick={() => handleEdit(value)}
                         className="py-2 md:px-3 px-2 bg-green-500 rounded-md  font-semibold"
