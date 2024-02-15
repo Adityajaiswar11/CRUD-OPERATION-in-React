@@ -89,7 +89,7 @@ const Data = () => {
       </div>
 
       <ToastContainer />
-      <div className="w-full md:w-[50%] mx-auto my-6 text-white  h-full">
+      <div className="w-full md:w-[50%] mx-auto my-12 text-white  h-full">
         <form
           action=""
           className="w-full flex md:justify-between md:items-center md:gap-10 gap-5 flex-col  md:flex-row justify-center p-1"
@@ -103,7 +103,7 @@ const Data = () => {
               type="text"
               placeholder="Add your name..."
               value={name}
-              className="md:py-2  py-4 px-2 w-full rounded-md mt-1 outline-none bg--800   text-black/65 font-semibold  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90 "
+              className="md:py-2  py-4 px-2 w-full rounded-md mt-1 outline-none bg--800   text-black/65 font-semibold  focus:ring-1 focus:ring-blue-500 focus:ring-offset-blue-500 "
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -122,7 +122,7 @@ const Data = () => {
             className={`${
               editid
                 ? "bg-green-500 rounded-md mt-6 font-semibold py-2 px-4 hover:opacity-100 duration-100 ease-linear opacity-90"
-                : "py-2 px-4 bg-blue-500 rounded-md mt-6 font-semibold hover:opacity-100 duration-100 ease-linear opacity-90"
+                : "py-4 md:py-2 px-4 bg-blue-500 rounded-md mt-6 font-semibold hover:opacity-100 duration-100 ease-linear opacity-90"
             } `}
           >
             {editid ? "Edit" : "Submit"}
@@ -131,7 +131,7 @@ const Data = () => {
       </div>
 
       {inputValues?.length > 0 ? (
-        <table className="table md:w-[50%] w-full mx-auto text-white/85 border-collapse border border-slate-500">
+        <table className="table md:w-[50%] w-full mx-auto text-white/85 border-collapse border border-slate-500 w-full">
           <tbody>
             <tr className="">
               <th className="py-3 border border-white/50">Name</th>
@@ -175,15 +175,15 @@ const Data = () => {
         </table>
       ) : (
         <>
-          <div className="flex justify-center items-center w-full">
-            <div className="w-[25%]">
+          {/* <div className="flex justify-center items-center w-full">
+            <div className="">
               <img
                 src="https://thumbs.dreamstime.com/b/to-do-list-doodle-design-vector-illustration-empty-checklist-143023309.jpg"
-                className="rounded-md"
+                className="rounded-md w-[300px] "
                 alt="img"
               />
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </>
       )}
     </div>
