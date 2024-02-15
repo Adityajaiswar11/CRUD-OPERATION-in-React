@@ -9,7 +9,6 @@ const Data = () => {
     return data ? JSON.parse(data) : [];
   };
 
-  const [description, setDescription] = useState("");
   const [name, setName] = useState("");
   const [task, setTask] = useState("");
   const [editid, setEditid] = useState(0);
@@ -30,7 +29,7 @@ const Data = () => {
       const editdata = inputValues.find((d) => d.id === editid);
       const editedData = inputValues.map((data) =>
         data.id === editdata.id
-          ? (data = { id: data.id, name, description, task })
+          ? (data = { id: data.id, name, task })
           : {
               id: data.id,
               name: data.name,
@@ -40,25 +39,21 @@ const Data = () => {
       );
       setInputvalues(editedData);
       setName("");
-      setDescription("");
+
       setTask("");
       setEditid(0);
       return;
     }
 
-    if (!name || !description || !task) {
+    if (!name || !task) {
       toast.error("Please fill out all fields!", {
         position: "top-center",
       });
     }
 
-    if (name !== "" && description !== "" && task !== "") {
-      setInputvalues([
-        { id: `${Date.now()}`, name, description, task },
-        ...inputValues,
-      ]);
+    if (name !== "" && task !== "") {
+      setInputvalues([{ id: `${Date.now()}`, name, task }, ...inputValues]);
       setName("");
-      setDescription("");
       setTask("");
     }
   };
@@ -68,7 +63,6 @@ const Data = () => {
   const handleEdit = (value) => {
     let newData = inputValues.find((data) => data.id === value.id);
     setName(newData.name);
-    setDescription(newData.description);
     setTask(newData.task);
     setEditid(value.id);
   };
@@ -81,12 +75,21 @@ const Data = () => {
   };
 
   return (
-    <>
-      <h3 className="text-2xl text-center font-semibold bg-slate-900 text-red-500/90  py-8 border-b">
-        Add your daily todo task
-      </h3>
+    <div className="">
+      <div className="flex justify-center items-center gap-4 py-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+        <img
+          src="https://www.amitree.com/wp-content/uploads/2021/08/the-pros-and-cons-of-paper-to-do-lists.jpeg"
+          alt=""
+          width={90}
+          className="rounded-md"
+        />
+        <h3 className="text-4xl text-center font-semibold text-white/80 drop-shadow-md">
+          ADD <span className="text-red-500 px-2 ">TO-DO</span>LIST
+        </h3>
+      </div>
+
       <ToastContainer />
-      <div className="w-full md:w-[80%] mx-auto my-6 text-white  h-full">
+      <div className="w-full md:w-[50%] mx-auto my-6 text-white  h-full">
         <form
           action=""
           className="w-full flex md:justify-between md:items-center md:gap-10 gap-5 flex-col  md:flex-row justify-center p-1"
@@ -100,19 +103,8 @@ const Data = () => {
               type="text"
               placeholder="Add your name..."
               value={name}
-              className="md:py-2  py-4 px-2 w-full rounded-md mt-1 outline-none bg-slate-800   focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90 "
+              className="md:py-2  py-4 px-2 w-full rounded-md mt-1 outline-none bg--800   text-black/65 font-semibold  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90 "
               onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-
-          <div className=" text-white/70">
-            <label htmlFor="description">Description</label>
-            <input
-              type="description"
-              placeholder="Add your description..."
-              value={description}
-              className="md:py-2  py-4 px-2 w-full rounded-md mt-1 outline-none bg-slate-800  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90"
-              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
           <div className=" text-white/70">
@@ -121,7 +113,7 @@ const Data = () => {
               type="text"
               placeholder="Add your task..."
               value={task}
-              className="md:py-2 py-4 px-2 w-full rounded-md mt-1  outline-none bg-slate-800  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90"
+              className="md:py-2 py-4 px-2 w-full rounded-md mt-1  outline-none text-black/65 font-semibold  focus:ring-1 focus:ring-white/70 focus:ring-offset-white/90"
               onChange={(e) => setTask(e.target.value)}
             />
           </div>
@@ -137,17 +129,14 @@ const Data = () => {
           </button>
         </form>
       </div>
-      {inputValues?.length > 0 && (
-        <table className="table md:w-[80%] w-full mx-auto bg-slate-900 text-white/85 border-collapse border border-slate-500">
+
+      {inputValues?.length > 0 ? (
+        <table className="table md:w-[50%] w-full mx-auto text-white/85 border-collapse border border-slate-500">
           <tbody>
-            <tr className="bg-slate-600/80">
-              <th className="py-3 border border-slate-600 hidden md:flex md:justify-center md:items-center">
-                ID
-              </th>
-              <th className="py-3 border border-slate-600">Name</th>
-              <th className="py-3 border border-slate-600">Description</th>
-              <th className="py-3 border border-slate-600">Task</th>
-              <th className="py-3 border border-slate-600">Actions</th>
+            <tr className="">
+              <th className="py-3 border border-white/50">Name</th>
+              <th className="py-3 border border-white/50">Task</th>
+              <th className="py-3 border border-white/50">Actions</th>
             </tr>
           </tbody>
 
@@ -156,19 +145,14 @@ const Data = () => {
               <Fragment key={id}>
                 <tbody>
                   <tr className="text-center text-white/70">
-                    <td className="py-2  border-y-none md:border-slate-600 hidden md:flex md:justify-center md:items-center">
-                      {value?.id}
-                    </td>
-                    <td className="py-2  border border-slate-600">
+                    <td className="py-2  border border-white/50">
                       {value?.name}
                     </td>
-                    <td className="py-2 border border-slate-600">
-                      {value?.description}
-                    </td>
-                    <td className=" py-2 border border-slate-600">
+
+                    <td className=" py-2 border border-white/50">
                       {value?.task}
                     </td>
-                    <td className=" py-2 border border-slate-600 md:flex md:justify-center md:gap-3 md:items-item">
+                    <td className=" py-2 border border-white/50 md:flex md:justify-center md:gap-6 gap-3 md:items-item">
                       <button
                         onClick={() => handleEdit(value)}
                         className="py-2 md:px-3 px-2 bg-green-500 rounded-md  font-semibold"
@@ -178,7 +162,7 @@ const Data = () => {
                       </button>{" "}
                       <button
                         onClick={() => handleDelete(value.id)}
-                        className="py-2 md:px-3 px-2 bg-red-500 rounded-md ml-2 font-semibol"
+                        className="py-2 md:px-3 px-2 bg-red-500 rounded-md ml-2 font-semibold"
                       >
                         Delete
                       </button>
@@ -189,8 +173,20 @@ const Data = () => {
             );
           })}
         </table>
+      ) : (
+        <>
+          <div className="flex justify-center items-center w-full">
+            <div className="w-[25%]">
+              <img
+                src="https://thumbs.dreamstime.com/b/to-do-list-doodle-design-vector-illustration-empty-checklist-143023309.jpg"
+                className="rounded-md"
+                alt="img"
+              />
+            </div>
+          </div>
+        </>
       )}
-    </>
+    </div>
   );
 };
 
