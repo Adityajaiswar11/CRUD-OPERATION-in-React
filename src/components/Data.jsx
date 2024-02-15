@@ -131,7 +131,7 @@ const Data = () => {
       </div>
 
       {inputValues?.length > 0 ? (
-        <table className="table md:w-[50%] w-full mx-auto text-white/85 border-collapse border border-slate-500 w-full">
+        <table className="table md:w-[50%]  mx-auto text-white/85 border-collapse border border-slate-500 w-full">
           <tbody>
             <tr className="">
               <th className="py-3 border border-white/50">Name</th>
@@ -152,7 +152,7 @@ const Data = () => {
                     <td className=" py-2 border border-white/50">
                       {value?.task}
                     </td>
-                    <td className=" py-2 border border-white/50 md:flex md:justify-center md:gap-6 gap-3 md:items-item">
+                    <td className=" py-2 border border-white/50 md:flex md:justify-center md:gap-6 md:items-item">
                       <button
                         onClick={() => handleEdit(value)}
                         className="py-2 md:px-3 px-2 bg-green-500 rounded-md  font-semibold"
