@@ -33,7 +33,6 @@ const Data = () => {
           : {
               id: data.id,
               name: data.name,
-              description: data.description,
               task: data.task,
             }
       );
