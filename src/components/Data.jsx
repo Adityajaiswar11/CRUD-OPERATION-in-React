@@ -9,7 +9,7 @@ const Data = () => {
     return data ? JSON.parse(data) : [];
   };
 
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
   const [task, setTask] = useState("");
   const [editid, setEditid] = useState(0);
   const [inputValues, setInputvalues] = useState(getData());
@@ -29,31 +29,27 @@ const Data = () => {
       const editdata = inputValues.find((d) => d.id === editid);
       const editedData = inputValues.map((data) =>
         data.id === editdata.id
-          ? (data = { id: data.id, name, task })
+          ? (data = { id: data.id, task })
           : {
               id: data.id,
-              name: data.name,
-              description: data.description,
               task: data.task,
             }
       );
       setInputvalues(editedData);
-      setName("");
 
       setTask("");
       setEditid(0);
       return;
     }
 
-    if (!name || !task) {
+    if (!task) {
       toast.error("Please fill out all fields!", {
         position: "top-center",
       });
     }
 
-    if (name !== "" && task !== "") {
-      setInputvalues([{ id: `${Date.now()}`, name, task }, ...inputValues]);
-      setName("");
+    if (task !== "") {
+      setInputvalues([{ id: `${Date.now()}`, task }, ...inputValues]);
       setTask("");
     }
   };
@@ -62,7 +58,7 @@ const Data = () => {
 
   const handleEdit = (value) => {
     let newData = inputValues.find((data) => data.id === value.id);
-    setName(newData.name);
+
     setTask(newData.task);
     setEditid(value.id);
   };
@@ -89,24 +85,12 @@ const Data = () => {
       </div>
 
       <ToastContainer />
-      <div className="w-full md:w-[50%] mx-auto my-12 text-white  h-full">
+      <div className="w-full md:w-[50%]  lg:w-[30%] mx-auto my-12 text-white  h-full">
         <form
           action=""
           className="w-full flex md:justify-between md:items-center md:gap-10 gap-5 flex-col  md:flex-row justify-center p-1"
           onSubmit={submitHandler}
         >
-          <div className="">
-            <label htmlFor="name" className="mr-2 py-2 text-white/70">
-              Your Name
-            </label>
-            <input
-              type="text"
-              placeholder="Add your name..."
-              value={name}
-              className="md:py-2  py-4 px-2 w-full rounded-md mt-1 outline-none bg--800   text-black/65 font-semibold  focus:ring-1 focus:ring-blue-500 focus:ring-offset-blue-500 "
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
           <div className=" text-white/70">
             <label htmlFor="task">Add Task</label>
             <input
@@ -125,16 +109,15 @@ const Data = () => {
                 : "py-4 md:py-2 px-4 bg-blue-500 rounded-md mt-6 font-semibold hover:opacity-100 duration-100 ease-linear opacity-90"
             } `}
           >
-            {editid ? "Edit" : "Submit"}
+            {editid ? "Edit" : "Add"}
           </button>
         </form>
       </div>
 
       {inputValues?.length > 0 ? (
-        <table className="table md:w-[50%]  mx-auto text-white/85 border-collapse border border-slate-500 w-full">
+        <table className="table md:w-[50%] lg:w-[30%]  mx-auto text-white/85 border-collapse border border-slate-500 w-full">
           <tbody>
             <tr className="">
-              <th className="py-3 border border-white/50">Name</th>
               <th className="py-3 border border-white/50">Task</th>
               <th className="py-3 border border-white/50">Actions</th>
             </tr>
@@ -145,10 +128,6 @@ const Data = () => {
               <Fragment key={id}>
                 <tbody>
                   <tr className="text-center text-white/70">
-                    <td className="py-2  border border-white/50">
-                      {value?.name}
-                    </td>
-
                     <td className=" py-2 border border-white/50">
                       {value?.task}
                     </td>
@@ -174,17 +153,7 @@ const Data = () => {
           })}
         </table>
       ) : (
-        <>
-          {/* <div className="flex justify-center items-center w-full">
-            <div className="">
-              <img
-                src="https://thumbs.dreamstime.com/b/to-do-list-doodle-design-vector-illustration-empty-checklist-143023309.jpg"
-                className="rounded-md w-[300px] "
-                alt="img"
-              />
-            </div> */}
-          {/* </div> */}
-        </>
+        <></>
       )}
     </div>
   );
